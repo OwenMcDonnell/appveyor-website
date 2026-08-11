@@ -6,13 +6,45 @@
 
 ## Getting started
 
-* Install [Node.js](https://nodejs.org/download/)
-* Install Ruby matching `.ruby-version`
-* Install the Node.js dependencies via npm: `npm install`
-* Install Ruby dependencies: `bundle install`
-* Build the static site: `npm run build`
+Install:
 
-The generated site is written to `_site/`.
+* [Node.js](https://nodejs.org/download/) >= 18
+* Ruby matching version found in `.ruby-version`
+* Bundler: run `gem install bundler`
+
+Install project dependencies:
+
+```sh
+npm install
+bundle install
+```
+
+Build the production static site:
+
+```sh
+npm run build
+```
+
+The generated site is written to the `_site/` directory.
+
+The build script runs Jekyll and then performs the asset pipeline directly from
+`scripts/build.js`: CSS and JavaScript bundling/minification, asset
+fingerprinting, reference rewriting, and HTML minification.
+
+To preview the generated site locally, serve `_site/` with any static file
+server. For example:
+
+```sh
+npx http-server _site -p 4000
+```
+
+Then open <http://localhost:4000/>.
+
+`npm test` currently runs the same production build:
+
+```sh
+npm test
+```
 
 ## Staging
 
